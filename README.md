@@ -48,3 +48,6 @@ Für Administratoren ist die Auswertung einer Statistik sinnvoll. Folgende Auswe
     Wieviele Nachrichten wurden an den letzten 7 Tagen (pro Tag) veröffentlicht
 
 Um die Software testen zu können muss die Datenbank mit Testwerten befüllt werden.
+
+# External Links
+Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q#
