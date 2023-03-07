@@ -50,7 +50,7 @@ Für Administratoren ist die Auswertung einer Statistik sinnvoll. Folgende Auswe
 Um die Software testen zu können muss die Datenbank mit Testwerten befüllt werden.
 
 # External Links
-Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q#
+Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-FSST-mblatter-MsgBoard
 
 # Protokol
 ## Login
