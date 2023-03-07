@@ -54,27 +54,39 @@ Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q
 
 # Protokol
 ## Login
-| Partei      | Kommando | Erläuterung     |
-| :---        |    :----:   |          :--- |
-| Client      |    LOGIN \<Benutzername> \<Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    |
-| Server      |    LOGIN_SUCCESS   |  Der Benutzer wurde erfolgreich eingeloggt.  | //<Sessionkey> Sessionkey statt jedes mal Benutzernamen und Passwort. ???
-| Server      |    LOGIN_FAILED    |  Die Anmeldung ist fehlgeschlagen.  |
+| Partei      | Kommando | Erläuterung     | Beispiel |
+| :---        |    :----:   |          :--- | :--- |
+| Client      |    LOGIN \<Benutzername>\t\<Passwort>\t   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    | LOGIN Max123\tmypassword\t
+| Server      |    LOGIN_SUCCESS   |  Der Benutzer wurde erfolgreich eingeloggt.  | LOGIN_SUCCESS
+| Server      |    LOGIN_FAILED    |  Die Anmeldung ist fehlgeschlagen.  | LOGIN_FAILED
 ## Messages
-| Partei      | Kommando | Erläuterung     |
-| :---        |    :----:   |          :--- |
-| Client      |    TOPICS   |  Abrufen einer Liste aller verfügbaren Themen.  |
-| Server      |    TOPICS \<Thema1> \<Thema2> |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  |
-| Client      |    NEWS \<Thema>   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  |
-| Server      |    NEWS \<Nachricht1> \<Nachricht2> | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  |
-| Client      |    SUBSCRIBE \<Thema>   |  Abonnieren des angegebenen Themas.  |
-| Server      |    SUBSCRIBE_SUCCESS \<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  |
-| Client      |    UNSUBSCRIBE \<Thema>    |  Kündigen des Abonnements für das angegebene Thema.  |
-| Server      |    UNSUBSCRIBE_SUCCESS \<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  |
-| Client      |    COMMENT \<Nachricht-ID> \<Kommentar>    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  |
-| Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  |
+| Partei      | Kommando | Erläuterung     | Beispiel |
+| :---        |    :----:   |          :--- | :--- |
+| Client      |    TOPICS   |  Abrufen einer Liste aller verfügbaren Themen.  | TOPICS
+| Server      |    TOPICS \<Thema1>\t\<Thema2>\t |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  | TOPICS Politik\tWirtschaft\tSport\t
+| Client      |    MY_NEWS  |  Abrufen einer Liste von Nachrichten die der Benutzer abonniert hat.  | MY_NEWS
+| Server      |    MY_NEWS \<Nachricht1>\t\<Nachricht2>\t | Eine Liste von Nachrichten die der Benutzer abonniert hat wurde erfolgreich abgerufen.  | MY_NEWS Artikel1\tArtikel2\tArtikel3\t
+| Client      |    NEWS \<Thema>\t   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  | NEWS Sport\t
+| Server      |    NEWS \<Nachricht1>\t\<Nachricht2>\t | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  | NEWS Artikel1\tArtikel2\tArtikel3\t
+| Client      |    SUBSCRIBE \<Thema>\t   |  Abonnieren des angegebenen Themas.  | SUBSCRIBE Politik\t
+| Server      |    SUBSCRIBE_SUCCESS \<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  | SUBSCRIBE_SUCCESS Politik\t
+| Client      |    UNSUBSCRIBE \<Thema>\t    |  Kündigen des Abonnements für das angegebene Thema.  | UNSUBSCRIBE Wirtschaft\t
+| Server      |    UNSUBSCRIBE_SUCCESS \<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  | UNSUBSCRIBE_SUCCESS Wirtschaft\t
+| Client      |    COMMENT \<Nachricht-ID>\t\<Kommentar>\t    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  | COMMENT 1234\t"Hallo"\t
+| Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  | COMMENT_SUCCESS
+| Client      |    RATE \<Nachricht-ID>\t\<Bewertung>\t      |    Bewertung einer Nachricht     | RATE 1234 4
+| Server      |    RATE_SUCCSESS      |    Die Bewertung wurde erfolgreich hinzugefügt.    | RATE_SUCCESS
 
 ## Logout
-| Partei      | Kommando | Erläuterung     |
-| :---        |    :----:   |          :--- |
-| Client      |    LOGOUT    |  Ausloggen des Benutzers.  |
-| Server      |    LOGOUT_SUCCESS    |  Der Benutzer wurde erfolgreich ausgeloggt.|
+| Partei      | Kommando | Erläuterung     | Beispiel |
+| :---        |    :----:   |          :--- | :--- |
+| Client      |    LOGOUT    |  Ausloggen des Benutzers.  | LOGOUT
+| Server      |    LOGOUT_SUCCESS    |  Der Benutzer wurde erfolgreich ausgeloggt.|  LOGOUT_SUCCESS
+
+TODO Brenn:
+
+        Beispielspalte // done
+        NEWS abfragen // done
+        Format: CSV // done
+        Rate // done
+        Client als JAVAFX mit Testclass
