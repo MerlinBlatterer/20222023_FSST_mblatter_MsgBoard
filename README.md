@@ -56,21 +56,21 @@ Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q
 ## Login
 | Partei      | Kommando | Erläuterung     |
 | :---        |    :----:   |          :--- |
-| Client      |    LOGIN <Benutzername> <Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    |
+| Client      |    LOGIN \<Benutzername> \<Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    |
 | Server      |    LOGIN_SUCCESS   |  Der Benutzer wurde erfolgreich eingeloggt.  | //<Sessionkey> Sessionkey statt jedes mal Benutzernamen und Passwort. ???
 | Server      |    LOGIN_FAILED    |  Die Anmeldung ist fehlgeschlagen.  |
 ## Messages
 | Partei      | Kommando | Erläuterung     |
 | :---        |    :----:   |          :--- |
 | Client      |    TOPICS   |  Abrufen einer Liste aller verfügbaren Themen.  |
-| Server      |    TOPICS <Thema1> <Thema2> |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  |
-| Client      |    NEWS <Thema>   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  |
-| Server      |    NEWS <Nachricht1> <Nachricht2> | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  |
-| Client      |    SUBSCRIBE <Thema>   |  Abonnieren des angegebenen Themas.  |
-| Server      |    SUBSCRIBE_SUCCESS <Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  |
-| Client      |    UNSUBSCRIBE <Thema>    |  Kündigen des Abonnements für das angegebene Thema.  |
-| Server      |    UNSUBSCRIBE_SUCCESS <Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  |
-| Client      |    COMMENT <Nachricht-ID> <Kommentar>    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  |
+| Server      |    TOPICS \<Thema1> \<Thema2> |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  |
+| Client      |    NEWS \<Thema>   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  |
+| Server      |    NEWS \<Nachricht1> \<Nachricht2> | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  |
+| Client      |    SUBSCRIBE \<Thema>   |  Abonnieren des angegebenen Themas.  |
+| Server      |    SUBSCRIBE_SUCCESS \<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  |
+| Client      |    UNSUBSCRIBE \<Thema>    |  Kündigen des Abonnements für das angegebene Thema.  |
+| Server      |    UNSUBSCRIBE_SUCCESS \<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  |
+| Client      |    COMMENT \<Nachricht-ID> \<Kommentar>    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  |
 | Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  |
 
 ## Logout
