@@ -72,8 +72,9 @@ Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q
 | Server      |    UNSUBSCRIBE_SUCCESS <Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  |
 | Client      |    COMMENT <Nachricht-ID> <Kommentar>    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  |
 | Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  |
+
+## Logout
+| Partei      | Kommando | Erläuterung     |
+| :---        |    :----:   |          :--- |
 | Client      |    LOGOUT    |  Ausloggen des Benutzers.  |
-| Server      |    LOGOUT_SUCCESS    |  Der Benutzer wurde erfolgreich ausgeloggt.
-
-
-|
+| Server      |    LOGOUT_SUCCESS    |  Der Benutzer wurde erfolgreich ausgeloggt.|
