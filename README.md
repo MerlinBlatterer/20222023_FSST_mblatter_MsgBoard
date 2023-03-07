@@ -57,12 +57,12 @@ Datenbank Modell: https://app.genmymodel.com/editor/edit/_K-AXsLg0Ee2iMaDbHjOx0Q
 | Partei      | Kommando | Erläuterung     |
 | :---        |    :----:   |          :--- |
 | Client      |    LOGIN <Benutzername> <Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    |
-| Server      |    LOGIN_SUCCESS    |  Der Benutzer wurde erfolgreich eingeloggt.  |
+| Server      |    LOGIN_SUCCESS   |  Der Benutzer wurde erfolgreich eingeloggt.  | //<Sessionkey> Sessionkey statt jedes mal Benutzernamen und Passwort. ???
 | Server      |    LOGIN_FAILED    |  Die Anmeldung ist fehlgeschlagen.  |
 ## Messages
 | Partei      | Kommando | Erläuterung     |
 | :---        |    :----:   |          :--- |
-| Client      |    TOPICS    |  Abrufen einer Liste aller verfügbaren Themen.  |
+| Client      |    TOPICS   |  Abrufen einer Liste aller verfügbaren Themen.  |
 | Server      |    TOPICS <Thema1> <Thema2> |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  |
 | Client      |    NEWS <Thema>   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  |
 | Server      |    NEWS <Nachricht1> <Nachricht2> | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  |
