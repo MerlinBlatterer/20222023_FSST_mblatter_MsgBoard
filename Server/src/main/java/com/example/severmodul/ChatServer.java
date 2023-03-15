@@ -6,6 +6,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class ChatServer {
@@ -17,13 +18,15 @@ public class ChatServer {
     public void start(int port) {
         try {
             serverSocket = new ServerSocket(port);
+            System.out.println("created socket. waiting for client...");
             clientSocket = serverSocket.accept();
+            System.out.println("Connected");
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String inputLine;
+            /*String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 System.out.println(inputLine);
-            }
+            }*/
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -50,6 +53,26 @@ public class ChatServer {
                 msg = in.readLine();
                 while(msg != null){
                     System.out.println("Client: "+msg);
+                    String[] args = msg.split("\t");
+                    System.out.println(args.length + " " + args[0]);
+                    switch (args[0]){
+                        case "":
+                                break;
+                        case "LOGIN":
+                            break;
+                    }
+
+
+
+
+
+
+
+
+
+
+
+
                     msg = in.readLine();
                 }
                 System.out.println("Client disconnected");
