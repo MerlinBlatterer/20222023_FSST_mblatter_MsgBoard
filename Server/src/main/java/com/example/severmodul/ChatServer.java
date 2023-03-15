@@ -59,6 +59,10 @@ public class ChatServer {
                         case "":
                                 break;
                         case "LOGIN":
+                            if (args.length!=3){
+                                out.println("LOGIN_FAILED");
+                            }
+                            if(args[])
                             break;
                     }
 
