@@ -1,34 +1,26 @@
-package com.example.severmodul;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.net.ServerSocket;
 import java.net.Socket;
+import java.net.UnknownHostException;
 import java.util.Scanner;
 
-public class ChatServer {
-    private ServerSocket serverSocket;
+public class ChatClient {
     private Socket clientSocket;
     private PrintWriter out;
     private BufferedReader in;
 
-    public void start(int port) {
+    public void startConnection(String ip, int port) {
         try {
-            serverSocket = new ServerSocket(port);
-            clientSocket = serverSocket.accept();
+            clientSocket = new Socket(ip, port);
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-            String inputLine;
-            while ((inputLine = in.readLine()) != null) {
-                System.out.println(inputLine);
-            }
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
-
     Thread sender = new Thread(new Runnable() {
         String msg;
         Scanner input = new Scanner(System.in);
@@ -49,13 +41,12 @@ public class ChatServer {
             try {
                 msg = in.readLine();
                 while(msg != null){
-                    System.out.println("Client: "+msg);
+                    System.out.println("Server: "+msg);
                     msg = in.readLine();
                 }
-                System.out.println("Client disconnected");
+                System.out.println("Server disconnected");
                 out.close();
                 clientSocket.close();
-                serverSocket.close();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -63,9 +54,9 @@ public class ChatServer {
     });
 
     public static void main(String[] args) {
-        ChatServer server = new ChatServer();
-        server.start(6666);
-        server.sender.start();
-        server.receiver.start();
+        ChatClient client = new ChatClient();
+        client.startConnection("127.0.0.1", 6666);
+        client.sender.start();
+        client.receiver.start();
     }
 }
