@@ -8,6 +8,8 @@ public class Client {
     private static final String PASSWORD = "pass123";
 
     public static void main(String[] args) {
+        // mit Server verbinden
+
         Scanner scanner = new Scanner(System.in);
 
         System.out.print("Benutzername: ");
@@ -22,4 +24,6 @@ public class Client {
             System.out.println("Benutzername oder Passwort falsch!");
         }
     }
+    // An server senden
+    // Nachrichten empfangen
 }

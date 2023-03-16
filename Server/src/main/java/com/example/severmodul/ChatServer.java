@@ -9,6 +9,8 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+ // Nachrichten senden/empfangen
+
 public class ChatServer {
     private ServerSocket serverSocket;
     private Socket clientSocket;
