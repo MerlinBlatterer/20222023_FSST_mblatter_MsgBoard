@@ -7,23 +7,57 @@ public class Client {
     private static final String USERNAME = "user123";
     private static final String PASSWORD = "pass123";
 
-    public static void main(String[] args) {
-        // mit Server verbinden
+    public void startConnection(String ip, int port) {
+        try {
+            clientSocket = new Socket(ip, port);
+            out = new PrintWriter(clientSocket.getOutputStream(), true);
+            in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.print("Benutzername: ");
-        String username = scanner.nextLine();
-
-        System.out.print("Passwort: ");
-        String password = scanner.nextLine();
-
-        if (username.equals(USERNAME) && password.equals(PASSWORD)) {
-            System.out.println("Login erfolgreich!");
-        } else {
-            System.out.println("Benutzername oder Passwort falsch!");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
-    // An server senden
-    // Nachrichten empfangen
+
+    Thread sender = new Thread(new Runnable() {
+        String msg;
+        Scanner input = new Scanner(System.in);
+        @Override
+        public void run() {
+            while(true){
+                msg = input.nextLine();
+                msg = "LOGIN\tUsername\tpassword";//msg.replaceAll("\\\\t","\t");
+                out.println(msg);
+                out.flush();
+            }
+        }
+    });
+
+    Thread receiver = new Thread(new Runnable() {
+        String msg;
+        @Override
+        public void run() {
+            try {
+                msg = in.readLine();
+                while(msg != null){
+                    System.out.println("Server: "+msg);
+                    msg = in.readLine();
+                }
+                System.out.println("Server disconnected");
+                out.close();
+                clientSocket.close();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+    });
+    public static void main(String[] args) {
+        // mit Server verbinden
+        ChatClient client = new ChatClient();
+        client.startConnection("127.0.0.1", 6666);
+        client.sender.start();
+        client.receiver.start();
+    }
 }
+// An server senden
+// Nachrichten empfangen
+// (Dummy)Messages aus der DB müssen angezeigt werden
