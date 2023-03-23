@@ -9,15 +9,24 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
     @Override
-    public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
-        stage.setTitle("Hello!");
-        stage.setScene(scene);
-        stage.show();
+    public void start(Stage primaryStage) throws Exception {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("hello-view.fxml"));
+        Scene scene = new Scene(fxmlLoader.load(), 500, 500);
+        HelloController controller = fxmlLoader.getController();
+        controller.start();
+        primaryStage.setScene(scene);
+        primaryStage.setTitle("Hello Application");
+        primaryStage.show();
+    }
+
+    @Override
+    public void stop() throws Exception {
+        super.stop();
+        // Controller stop method aufrufen, um die socket-verbindung zu schließen
+        ((HelloController)FXMLLoader.load(getClass().getResource("hello-view.fxml"))).stop();
     }
 
     public static void main(String[] args) {
-        launch();
+        launch(args);
     }
 }

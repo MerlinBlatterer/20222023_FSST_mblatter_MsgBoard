@@ -1,3 +1,5 @@
+package com.example.demo;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -67,7 +69,7 @@ public class HelloController {
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
             setFieldsEnabled(true);
 
-            // Start einen neuen thread um die nachrichten vom server zu erhalten
+            // Startet einen neuen thread um die nachrichten vom server zu erhalten
             receiver = new Thread(() -> {
                 try {
                     String message = in.readLine();
