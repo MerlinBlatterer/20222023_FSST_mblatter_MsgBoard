@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/20222023_FSST_mblatter_MsgBoard.iml" filepath="$PROJECT_DIR$/.idea/20222023_FSST_mblatter_MsgBoard.iml" />
       <module fileurl="file://$PROJECT_DIR$/SeverModul/Server.iml" filepath="$PROJECT_DIR$/SeverModul/Server.iml" />
+      <module fileurl="file://$PROJECT_DIR$/demo/demo.iml" filepath="$PROJECT_DIR$/demo/demo.iml" />
     </modules>
   </component>
 </project>

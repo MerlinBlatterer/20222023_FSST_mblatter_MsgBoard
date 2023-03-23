@@ -9,7 +9,7 @@ public class Client {
 
     public void startConnection(String ip, int port) {
         try {
-            clientSocket = new Socket(ip, port);
+             clientSocket = new Socket(ip, port);
             out = new PrintWriter(clientSocket.getOutputStream(), true);
             in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
