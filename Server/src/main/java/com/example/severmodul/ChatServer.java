@@ -51,33 +51,53 @@ public class ChatServer {
         String msg;
         @Override
         public void run() {
+            FakeDB fakeDB = new FakeDB();
+            String userName = "";
             try {
                 msg = in.readLine();
                 while(msg != null){
                     System.out.println("Client: "+msg);
                     String[] args = msg.split("\t");
                     System.out.println(args.length + " " + args[0]);
-                    switch (args[0]){
-                        case "":
+                    if(userName.equals("")){
+                        switch (args[0]){
+                            case "":
+                                System.err.println("empty");;
                                 break;
-                        case "LOGIN":
-                            if (args.length!=3){
-                                out.println("LOGIN_FAILED");
-                            }
-                            if(args[])
-                            break;
+                            case "LOGIN":
+                                if (args.length!=3){
+                                    System.out.println("s: LOGIN_FAILED");
+                                    out.println("LOGIN_FAILED");
+                                }
+                                if(fakeDB.login(args[1],args[2])==1){
+                                    System.out.println("s: LOGIN_SUCCESS");
+                                    out.println("LOGIN_SUCCESS");
+                                    userName=args[1];
+                                }
+                                break;
+                            default:
+                                System.out.println(args[0] + " is INVALID! are you logged in?");
+                        }
                     }
-
-
-
-
-
-
-
-
-
-
-
+                    if(!userName.equals("")){
+                        switch (args[0]){
+                            case "TOPICS":
+                                ArrayList<String> topics = fakeDB.getTopics(userName);
+                                if(topics==null){
+                                    out.println("TOPICS");
+                                }else{
+                                    out.print("TOPICS");
+                                    for (String s:
+                                         topics) {
+                                        out.print("\t"+s);
+                                    }
+                                    out.println();
+                                }
+                                break;
+                            default:
+                                System.out.println("defaulted in LoggedIn switch");
+                        }
+                    }
 
                     msg = in.readLine();
                 }
@@ -94,7 +114,7 @@ public class ChatServer {
     public static void main(String[] args) {
         ChatServer server = new ChatServer();
         server.start(6666);
-        server.sender.start();
+        //server.sender.start();
         server.receiver.start();
     }
 }
