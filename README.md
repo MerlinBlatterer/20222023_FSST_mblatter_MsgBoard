@@ -66,12 +66,12 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 | Server      |    TOPICS \<Thema1>\t\<Thema2>\t |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  | TOPICS Politik\tWirtschaft\tSport\t
 | Client      |    MY_NEWS  |  Abrufen einer Liste von Nachrichten die der Benutzer abonniert hat.  | MY_NEWS
 | Server      |    MY_NEWS \<Nachricht1>\t\<Nachricht2>\t | Eine Liste von Nachrichten die der Benutzer abonniert hat wurde erfolgreich abgerufen.  | MY_NEWS Artikel1\tArtikel2\tArtikel3\t
-| Client      |    NEWS \<Thema>\t   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  | NEWS Sport\t
+| Client      |    NEWS\<Thema>\t   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  | NEWS Sport\t
 | Server      |    NEWS \<Nachricht1>\t\<Nachricht2>\t | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  | NEWS Artikel1\tArtikel2\tArtikel3\t
-| Client      |    SUBSCRIBE \<Thema>\t   |  Abonnieren des angegebenen Themas.  | SUBSCRIBE Politik\t
+| Client      |    SUBSCRIBE\<Thema>\t   |  Abonnieren des angegebenen Themas.  | SUBSCRIBE Politik\t
 | Server      |    SUBSCRIBE_SUCCESS \<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  | SUBSCRIBE_SUCCESS Politik\t
 | Client      |    UNSUBSCRIBE \<Thema>\t    |  Kündigen des Abonnements für das angegebene Thema.  | UNSUBSCRIBE Wirtschaft\t
-| Server      |    UNSUBSCRIBE_SUCCESS \<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  | UNSUBSCRIBE_SUCCESS Wirtschaft\t
+| Server      |    UNSUBSCRIBE_SUCCESS\<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  | UNSUBSCRIBE_SUCCESS Wirtschaft\t
 | Client      |    COMMENT \<Nachricht-ID>\t\<Kommentar>\t    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  | COMMENT 1234\t"Hallo"\t
 | Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  | COMMENT_SUCCESS
 | Client      |    RATE \<Nachricht-ID>\t\<Bewertung>\t      |    Bewertung einer Nachricht     | RATE 1234 4
@@ -85,8 +85,4 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 
 TODO Brenn:
 
-        Beispielspalte // done
-        NEWS abfragen // done
-        Format: CSV // done
-        Rate // done
-        Client als JAVAFX mit Testclass
+        

@@ -6,7 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.Socket;
 
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -62,6 +61,7 @@ public class HelloController {
         out.println(message);
         out.flush();
     }
+
     public void start() {
         try {
             clientSocket = new Socket(SERVER_IP, SERVER_PORT);
@@ -76,20 +76,11 @@ public class HelloController {
                     while (message != null) {
                         System.out.println("Server: " + message);
                         String[] parts = message.split("\t");
-                        if (parts[0].equals("LOGIN_STATUS")) {
-                            // login successful, zeigt success message und aktiviert das command field
-                            if (parts[1].equals("SUCCESS")) {
-                                statusLabel.setText("Logged in as " + usernameField.getText());
-                                commandField.requestFocus();
-                            }
-                            // login failed
-                            else {
-                                statusLabel.setText("Login failed");
-                            }
-                        }
-                        // wenn die message eine MY_NEWS message ist, dann zeigt es es in der message area
-                        else if (parts[0].equals("MY_NEWS")) {
-                            messagesArea.appendText(parts[1] + "\n");
+                        switch (parts[0]) {
+                            case "LOGIN_STATUS" -> handleLoginStatus(parts[1]);
+                            case "MY_NEWS" -> handleMyNews(parts[1]);
+                            case "TOPICS" -> handleTopics(parts[1]);
+                            default -> System.out.println("Unknown message type: " + parts[0]);
                         }
                         message = in.readLine();
                     }
@@ -112,5 +103,59 @@ public class HelloController {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void handleLoginStatus(String status) {
+        if (status.equals("SUCCESS")) {
+            statusLabel.setText("Logged in as " + usernameField.getText());
+            commandField.requestFocus();
+        } else {
+            statusLabel.setText("Login failed");
+        }
+    }
+
+    private void handleMyNews(String news) {
+        messagesArea.appendText(news + "\n");
+    }
+
+    private void handleTopics(String topics) {
+        messagesArea.appendText("Available topics: " + topics + "\n");
+    }
+
+    @FXML
+    private void handleCommand() {
+        String command = commandField.getText();
+        String[] parts = command.split(" ");
+        String message;
+        switch (parts[0].toUpperCase()) {
+            case "NEWS":
+                if (parts.length > 1) {
+                    message = "NEWS " + parts[1];
+                    sendToServer(message);
+                } else {
+                    messagesArea.appendText("Please specify a topic\n");
+                }
+                break;
+            case "SUBSCRIBE":
+                if (parts.length > 1) {
+                    message = "SUBSCRIBE " + parts[1];
+                    sendToServer(message);
+                    break;
+                }
+            case "UNSUBSCRIBE":
+                if (parts.length > 1) {
+                    message = "UNSUBSCRIBE " + parts[1];
+                    sendToServer(message);
+                } else {
+                    messagesArea.appendText("Please specify a topic\n");
+                }
+                break;
+            case "TOPICS":
+                sendToServer("TOPICS");
+                break;
+            default:
+                messagesArea.appendText("Unknown command\n");
+        }
+        commandField.clear();
     }
 }
