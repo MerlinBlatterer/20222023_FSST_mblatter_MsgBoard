@@ -30,7 +30,8 @@ public class ChatClient {
         public void run() {
             while(true){
                 msg = input.nextLine();
-                msg = "LOGIN\tUsername\tpassword";//msg.replaceAll("\\\\t","\t");
+                //msg = "LOGIN\tUsername\tpassword";
+                msg = msg.replaceAll("\\\\t","\t");
                 out.println(msg);
                 out.flush();
             }
