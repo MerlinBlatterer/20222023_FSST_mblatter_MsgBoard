@@ -77,7 +77,7 @@ public class HelloController {
                         System.out.println("Server: " + message);
                         String[] parts = message.split("\t");
                         switch (parts[0]) {
-                            case "LOGIN_STATUS" -> handleLoginStatus(parts[1]);
+                            case "LOGIN" -> handleLoginStatus(parts[1]);
                             case "MY_NEWS" -> handleMyNews(parts[1]);
                             case "TOPICS" -> handleTopics(parts[1]);
                             default -> System.out.println("Unknown message type: " + parts[0]);
@@ -128,20 +128,14 @@ public class HelloController {
         String[] parts = command.split(" ");
         String message;
         switch (parts[0].toUpperCase()) {
-            case "NEWS":
+            case "SUBSCRIBE":
                 if (parts.length > 1) {
-                    message = "NEWS " + parts[1];
+                    message = "SUBSCRIBE " + parts[1];
                     sendToServer(message);
                 } else {
                     messagesArea.appendText("Please specify a topic\n");
                 }
                 break;
-            case "SUBSCRIBE":
-                if (parts.length > 1) {
-                    message = "SUBSCRIBE " + parts[1];
-                    sendToServer(message);
-                    break;
-                }
             case "UNSUBSCRIBE":
                 if (parts.length > 1) {
                     message = "UNSUBSCRIBE " + parts[1];
@@ -150,11 +144,24 @@ public class HelloController {
                     messagesArea.appendText("Please specify a topic\n");
                 }
                 break;
+            case "MY_NEWS":
+                message = "MY_NEWS";
+                sendToServer(message);
+                break;
             case "TOPICS":
-                sendToServer("TOPICS");
+                message = "TOPICS";
+                sendToServer(message);
+                break;
+            case "NEWS":
+                if (parts.length > 1) {
+                    message = "NEWS " + parts[1];
+                    sendToServer(message);
+                } else {
+                    messagesArea.appendText("Please specify a topic\n");
+                }
                 break;
             default:
-                messagesArea.appendText("Unknown command\n");
+                messagesArea.appendText("Unknown command: " + command + "\n");
         }
         commandField.clear();
     }

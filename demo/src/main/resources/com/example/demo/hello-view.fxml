@@ -20,7 +20,7 @@
             <Label text="Messages:"/>
             <TextArea fx:id="messagesArea" prefHeight="200"/>
             <Label text="Command:"/>
-            <TextField fx:id="commandField"/>
+            <TextField fx:id="commandField" onAction="#handleCommand"/>
         </VBox>
     </center>
 </BorderPane>
