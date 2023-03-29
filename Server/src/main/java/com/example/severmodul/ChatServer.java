@@ -7,11 +7,13 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
  // Nachrichten senden/empfangen
 
 public class ChatServer {
+
     private ServerSocket serverSocket;
     private Socket clientSocket;
     private PrintWriter out;
@@ -58,42 +60,50 @@ public class ChatServer {
                 while(msg != null){
                     System.out.println("Client: "+msg);
                     String[] args = msg.split("\t");
-                    System.out.println(args.length + " " + args[0]);
+                    System.out.println("len: " + args.length + " " + Arrays.toString(args));
+                    //login:
                     if(userName.equals("")){
                         switch (args[0]){
                             case "":
-                                System.err.println("empty");;
+                                send("LOGIN_FAILED\tempty");
                                 break;
                             case "LOGIN":
                                 if (args.length!=3){
-                                    System.out.println("s: LOGIN_FAILED");
-                                    out.println("LOGIN_FAILED");
+                                    send("LOGIN_FAILED\tinvalid command format");
                                 }
                                 if(fakeDB.login(args[1],args[2])==1){
-                                    System.out.println("s: LOGIN_SUCCESS");
-                                    out.println("LOGIN_SUCCESS");
+                                    send("LOGIN_SUCCESS");
                                     userName=args[1];
+                                }else{
+                                    send("LOGIN_FAILED\tInvalid Username or Password");
                                 }
                                 break;
                             default:
-                                System.out.println(args[0] + " is INVALID! are you logged in?");
+                                send("LOGIN_FAILED\tCommand: " + args[0] + " is INVALID! are you logged in?");
                         }
                     }
+
+                    //Logged in:
+
                     if(!userName.equals("")){
                         switch (args[0]){
                             case "TOPICS":
                                 ArrayList<String> topics = fakeDB.getTopics(userName);
                                 if(topics==null){
-                                    out.println("TOPICS");
+                                    send("TOPICS");
                                 }else{
+                                    StringBuilder sendstr = new StringBuilder();
+                                    sendstr.append("TOPICS");
                                     out.print("TOPICS");
                                     for (String s:
                                          topics) {
-                                        out.print("\t"+s);
+                                        sendstr.append("\t").append(s);
                                     }
-                                    out.println();
+                                    send(sendstr.toString());
                                 }
                                 break;
+
+
                             default:
                                 System.out.println("defaulted in LoggedIn switch");
                         }
@@ -117,4 +127,18 @@ public class ChatServer {
         //server.sender.start();
         server.receiver.start();
     }
+
+    private void send(String msg){
+        System.out.println(ANSI_GREEN + msg + ANSI_RESET);
+        out.println(msg);
+    }
+    public static final String ANSI_RESET = "\u001B[0m";
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_RED = "\u001B[31m";
+    public static final String ANSI_GREEN = "\u001B[32m";
+    public static final String ANSI_YELLOW = "\u001B[33m";
+    public static final String ANSI_BLUE = "\u001B[34m";
+    public static final String ANSI_PURPLE = "\u001B[35m";
+    public static final String ANSI_CYAN = "\u001B[36m";
+    public static final String ANSI_WHITE = "\u001B[37m";
 }
