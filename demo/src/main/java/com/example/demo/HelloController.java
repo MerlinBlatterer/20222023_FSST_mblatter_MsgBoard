@@ -47,8 +47,9 @@ public class HelloController {
         // Connect to the server and log in
         String username = usernameField.getText();
         String password = passwordField.getText();
-        String message = "LOGIN " + username + " " + password;
+        String message = "LOGIN\t" + username + "\t" + password;
         sendToServer(message);
+        System.out.println("SENT:"+message);
     }
 
     private void setFieldsEnabled(boolean enabled) {
@@ -125,37 +126,42 @@ public class HelloController {
     @FXML
     private void handleCommand() {
         String command = commandField.getText();
-        String[] parts = command.split(" ");
+        String[] parts = command.split("\t");
         String message;
         switch (parts[0].toUpperCase()) {
             case "SUBSCRIBE":
                 if (parts.length > 1) {
-                    message = "SUBSCRIBE " + parts[1];
+                    message = "SUBSCRIBE\t" + parts[1];
                     sendToServer(message);
+                    System.out.println("SENT:"+message);
                 } else {
                     messagesArea.appendText("Please specify a topic\n");
                 }
                 break;
             case "UNSUBSCRIBE":
                 if (parts.length > 1) {
-                    message = "UNSUBSCRIBE " + parts[1];
+                    message = "UNSUBSCRIBE\t" + parts[1];
                     sendToServer(message);
+                    System.out.println("SENT:"+message);
                 } else {
                     messagesArea.appendText("Please specify a topic\n");
                 }
                 break;
             case "MY_NEWS":
-                message = "MY_NEWS";
+                message = "MY_NEWS\t";
                 sendToServer(message);
+                System.out.println("SENT:"+message);
                 break;
             case "TOPICS":
-                message = "TOPICS";
+                message = "TOPICS\t";
                 sendToServer(message);
+                System.out.println("SENT:"+message);
                 break;
             case "NEWS":
                 if (parts.length > 1) {
-                    message = "NEWS " + parts[1];
+                    message = "NEWS\t" + parts[1];
                     sendToServer(message);
+                    System.out.println("SENT:"+message);
                 } else {
                     messagesArea.appendText("Please specify a topic\n");
                 }
