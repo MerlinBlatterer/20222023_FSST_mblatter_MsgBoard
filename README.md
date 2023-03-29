@@ -56,7 +56,7 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 ## Login
 | Partei      | Kommando | Erläuterung     | Beispiel |
 | :---        |    :----:   |          :--- | :--- |
-| Client      |    LOGIN\t\<Benutzername>\t\<Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    | LOGIN Max123\tmypassword\t
+| Client      |    LOGIN\t\<Benutzername>\t\<Passwort>   |   Einloggen des Benutzers mit dem angegebenen Benutzernamen und Passwort.    | LOGIN Max123\tmypassword
 | Server      |    LOGIN_SUCCESS   |  Der Benutzer wurde erfolgreich eingeloggt.  | LOGIN_SUCCESS
 | Server      |    LOGIN_FAILED\t\<reason>    |  Die Anmeldung ist fehlgeschlagen.  | LOGIN_FAILED\tinvalid command!
 ## Messages
@@ -65,16 +65,16 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 | Client      |    TOPICS   |  Abrufen einer Liste aller verfügbaren Themen.  | TOPICS
 | Server      |    TOPICS\t\<Thema1>\t\<Thema2> |  Liste aller verfügbaren Themen wurde erfolgreich abgerufen.  | TOPICS\tPolitik\tWirtschaft\tSport
 | Client      |    MY_NEWS  |  Abrufen einer Liste von Nachrichten die der Benutzer abonniert hat.  | MY_NEWS
-| Server      |    MY_NEWS\t\<Nachricht1>\t\<Nachricht2> | Eine Liste von Nachrichten die der Benutzer abonniert hat wurde erfolgreich abgerufen.  | MY_NEWS\t Artikel1\tArtikel2\tArtikel3
+| Server      |    MY_NEWS\t\<Nachricht1>\t\<Nachricht2> | Eine Liste von Nachrichten die der Benutzer abonniert hat wurde erfolgreich abgerufen.  | MY_NEWS\tArtikel1\tArtikel2\tArtikel3
 | Client      |    NEWS\t\<Thema>   |  Abrufen einer Liste von Nachrichten für das angegebene Thema.  | NEWS\tSport
 | Server      |    NEWS\t\<Nachricht1>\t\<Nachricht2> | Eine Liste von Nachrichten für das angegebene Thema wurde erfolgreich abgerufen.  | NEWS\tArtikel1\tArtikel2\tArtikel3
-| Client      |    SUBSCRIBE\t\<Thema>   |  Abonnieren des angegebenen Themas.  | SUBSCRIBE Politik\t
+| Client      |    SUBSCRIBE\t\<Thema>   |  Abonnieren des angegebenen Themas.  | SUBSCRIBE\tPolitik
 | Server      |    SUBSCRIBE_SUCCESS\t\<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  | SUBSCRIBE_SUCCESS\tPolitik
 | Client      |    UNSUBSCRIBE\t\<Thema>    |  Kündigen des Abonnements für das angegebene Thema.  | UNSUBSCRIBE\t Wirtschaft
 | Server      |    UNSUBSCRIBE_SUCCESS\t\<Thema>    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  | UNSUBSCRIBE_SUCCESS\tWirtschaft
 | Client      |    COMMENT\t\<Nachricht-ID>\t\<Kommentar>    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  | COMMENT\t1234\t"Hallo"
 | Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  | COMMENT_SUCCESS
-| Client      |    RATE\t\<Nachricht-ID>\t\<Bewertung>      |    Bewertung einer Nachricht     | RATE 1234 4
+| Client      |    RATE\t\<Nachricht-ID>\t\<Bewertung>      |    Bewertung einer Nachricht     | RATE\t1234\t4
 | Server      |    RATE_SUCCSESS      |    Die Bewertung wurde erfolgreich hinzugefügt.    | RATE_SUCCESS
 
 ## Logout
