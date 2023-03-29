@@ -58,7 +58,7 @@ public class ChatServer {
             try {
                 msg = in.readLine();
                 while(msg != null){
-                    System.out.println("Client: "+msg);
+                    System.out.println(ANSI_BLUE+msg+ANSI_RESET);
                     String[] args = msg.split("\t");
                     System.out.println("len: " + args.length + " " + Arrays.toString(args));
                     //login:
