@@ -72,9 +72,9 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 | Server      |    SUBSCRIBE_SUCCESS \<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich hinzugefügt.  | SUBSCRIBE_SUCCESS Politik\t
 | Client      |    UNSUBSCRIBE \<Thema>\t    |  Kündigen des Abonnements für das angegebene Thema.  | UNSUBSCRIBE Wirtschaft\t
 | Server      |    UNSUBSCRIBE_SUCCESS\<Thema>\t    |  Das Abonnement für das angegebene Thema wurde erfolgreich gekündigt.  | UNSUBSCRIBE_SUCCESS Wirtschaft\t
-| Client      |    COMMENT \<Nachricht-ID>\t\<Kommentar>\t    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  | COMMENT 1234\t"Hallo"\t
+| Client      |    COMMENT\<Nachricht-ID>\t\<Kommentar>\t    |  Hinzufügen eines Kommentars zu der angegebenen Nachricht.  | COMMENT 1234\t"Hallo"\t
 | Server      |    COMMENT_SUCCESS    |  Der Kommentar wurde erfolgreich hinzugefügt.  | COMMENT_SUCCESS
-| Client      |    RATE \<Nachricht-ID>\t\<Bewertung>\t      |    Bewertung einer Nachricht     | RATE 1234 4
+| Client      |    RATE\<Nachricht-ID>\t\<Bewertung>\t      |    Bewertung einer Nachricht     | RATE 1234 4
 | Server      |    RATE_SUCCSESS      |    Die Bewertung wurde erfolgreich hinzugefügt.    | RATE_SUCCESS
 
 ## Logout

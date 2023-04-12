@@ -3,7 +3,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane fx:controller="HelloController"
+<BorderPane fx:controller="com.example.client.HelloController"
             xmlns:fx="http://javafx.com/fxml">
     <top>
         <HBox>
@@ -20,7 +20,8 @@
             <Label text="Messages:"/>
             <TextArea fx:id="messagesArea" prefHeight="200"/>
             <Label text="Command:"/>
-            <TextField fx:id="commandField" onAction="#commandFieldSubmitted"/>
+            <TextField fx:id="commandField" onAction="#handleCommand"/>
         </VBox>
     </center>
 </BorderPane>
+
