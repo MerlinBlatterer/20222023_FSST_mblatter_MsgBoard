@@ -83,6 +83,5 @@ Datenbank Modell: https://app.genmymodel.com/api/repository/OpenSauce/20222023-F
 | Client      |    LOGOUT    |  Ausloggen des Benutzers.  | LOGOUT
 | Server      |    LOGOUT_SUCCESS    |  Der Benutzer wurde erfolgreich ausgeloggt.|  LOGOUT_SUCCESS
 
-TODO Brenn:
 
         
